@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Header from "./Components/Header";
+import { useState } from "react";
+import NumberList from "./Components/NumberList";
 
 function App() {
+  const [attempt, setAttempt] = useState(4);
+  const [randomNum, setrandomNum] = useState(Math.floor(Math.random() * 101));
+  const [msg, setMsg] = useState("");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="thedisplay">
+      <Header />
+      <NumberList
+        attempt={attempt}
+        setAttempt={setAttempt}
+        randomNum={randomNum}
+        msg={msg}
+        setMsg={setMsg}
+      />
+      <div className="attem">
+        <h5>you have {attempt} left </h5>
+      </div>
+      <h6>{msg}</h6>
     </div>
   );
 }
